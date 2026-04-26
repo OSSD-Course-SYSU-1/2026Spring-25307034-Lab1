@@ -1,0 +1,223 @@
+health-service-kit-sample-code-master D:\hm
+│
+├── .hvigor                          # hvigor 构建工具相关配置目录
+├── .idea                            # IntelliJ IDEA 工程配置目录
+│
+├── AppScope                         # 应用全局配置目录
+│   ├── resources
+│   │   └── base
+│   │       ├── element              # 常量、字符串等资源配置
+│   │       ├── media                # 图片资源目录
+│   │       │   └── app_icon.png     # 应用图标
+│   │       └── app.json5            # 应用全局配置文件（模块名、版本等）
+│
+├── entry                            # 主模块目录
+│   ├── build                        # 编译输出目录
+│   ├── src
+│   │   └── main
+│   │       ├── ets                  # ArkTS 源码目录
+│   │       │   ├── common           # 公共工具类、常量、通用组件
+│   │       │   ├── entryability
+│   │       │   │   └── EntryAbility.ets   # 应用入口能力类（生命周期）
+│   │       │   └── pages            # 页面文件目录
+│   │       │       ├── AuthIndex.ets          # 认证/登录页
+│   │       │       ├── DataSourceIndex.ets   # 数据源管理页
+│   │       │       ├── ExerciseSequenceIndex.ets  # 运动序列页
+│   │       │       ├── HealthSequenceIndex.ets   # 健康序列页
+│   │       │       ├── MainIndex.ets          # 主页面/首页
+│   │       │       ├── SamplePointIndex.ets   # 采样点数据页
+│   │       │       └── WorkoutIndex.ets       # 锻炼记录页
+│   │       ├── resources            # 模块级资源目录
+│   │       │   └── base
+│   │       │       ├── element       # 字符串、颜色等基础配置
+│   │       │       ├── media
+│   │       │       │   └── startIcon.png    # 模块启动图标
+│   │       │       └── profile
+│   │       │           └── main_pages.json  # 页面路由配置
+│   │       ├── en_US                # 英文语言资源
+│   │       ├── zh_CN                # 中文语言资源
+│   │       └── module.json5         # 模块配置文件（权限、Ability等）
+│
+├── oh_modules                       # 项目依赖的第三方库
+├── build-profile.json5              # 项目级构建配置
+├── hvigorfile.ts                    # 项目级 hvigor 构建脚本
+├── oh-package.json5                 # 项目级依赖管理配置文件
+└── ...
+
+[项目根目录] D:\...
+│
+├── module.json5                     # 模块配置文件（定义Ability、权限、应用ID等）
+├── ohosTest                         # OHOS 测试代码目录（用于设备/模拟器集成测试）
+├── test                             # 单元测试代码目录（一般为纯JS/TS单元测试）
+├── .gitignore                       # Git 版本控制忽略文件配置
+├── build-profile.json5              # 工程级构建配置文件（签名、产品 flavor、构建类型）
+├── hvigorfile.ts                    # 工程级编译构建任务脚本（hvigor 构建入口）
+├── obfuscation-rules.txt            # 代码混淆规则文件（用于发布包代码加固）
+├── oh-package.json5                 # 模块依赖管理配置文件（声明三方库依赖）
+│
+├── hvigor                           # hvigor 构建工具文件目录
+│   └── (hvigor 运行时核心配置与包装脚本)
+│
+├── oh_modules                       # 第三方依赖库安装目录（npm/ohpm 包实际存放位置）
+│
+├── screenshots                      # 项目截图目录（通常用于README文档展示）
+│
+├── .gitignore                       # 工程级忽略文件（覆盖根目录配置）
+├── build-profile.json5              # 模块级构建配置（可能与根目录配置合并）
+├── hvigorfile.ts                    # 模块级编译构建任务脚本
+├── oh-package.json5                 # 模块级依赖管理配置文件
+├── oh-package-lock.json5            # 依赖版本锁定文件（确保构建一致性）
+│
+├── readme_cn.md                     # 项目说明文档（中文）
+├── readme_en.md                     # 项目说明文档（英文）
+│
+├── External Libraries               # IDE 展示的外部库（JDK、SDK、oh_modules 源码）
+└── Scratches and Consoles           # IDE 临时编辑文件与调试控制台记录
+
+
+
+项目功能分析报告
+
+一、项目概述
+
+项目名称: health-service-kit-sample-code
+技术框架: HarmonyOS ArkTS
+核心功能: 华为健康服务套件(Health Service Kit)API调用示例
+项目性质: 示例代码/Demo项目
+
+二、功能模块详细分析
+
+1. 主页面(MainIndex.ets) - 功能导航中心
+
+按钮名称: DataSource
+跳转页面: DataSourceIndex
+功能说明: 数据源管理
+
+按钮名称: SamplePoint
+跳转页面: SamplePointIndex
+功能说明: 采样点数据管理
+
+按钮名称: ExerciseSequence
+跳转页面: ExerciseSequenceIndex
+功能说明: 运动序列管理
+
+按钮名称: HealthSequence
+跳转页面: HealthSequenceIndex
+功能说明: 健康序列管理
+
+按钮名称: Auth
+跳转页面: AuthIndex
+功能说明: 权限管理
+
+按钮名称: Workout
+跳转页面: WorkoutIndex
+功能说明: 锻炼报告查询
+
+结论: 主页面是功能菜单入口，无业务逻辑，仅负责页面路由。
+
+2. 权限管理(AuthIndex.ets) - 用户授权控制
+
+功能按钮: RequestAuthorizations
+调用方法: AuthManagement.auth()
+功能说明: 向用户请求健康数据读取权限
+
+功能按钮: CancelAuthorizations
+调用方法: AuthManagement.cancelAuthAll()
+功能说明: 撤销所有已授权的权限
+
+功能按钮: GetAuthorizations
+调用方法: AuthManagement.getAuth()
+功能说明: 查询当前已授权的权限列表
+
+结论: 此模块负责健康服务套件的用户授权管理，是使用健康数据的前置步骤。
+
+3. 数据源管理(DataSourceIndex.ets) - 健康数据来源配置
+
+功能按钮: InsertDataSource
+调用方法: DataSourceManagement.insertDataSource()
+功能说明: 插入数据源(声明数据来自哪个设备/应用)
+
+功能按钮: UpdateDataSource
+调用方法: DataSourceManagement.updateDataSource()
+功能说明: 更新数据源信息
+
+功能按钮: ReadDataSource
+调用方法: DataSourceManagement.readDataSource()
+功能说明: 读取已配置的数据源列表
+
+结论: 此模块管理健康数据的来源设备或应用，支持多数据源场景。
+
+4. 采样点管理(SamplePointIndex.ets) - 原始数据读写
+
+功能按钮: SaveData
+调用方法: SamplePointManagement.saveData()
+功能说明: 写入采样点数据(原始传感器数据)
+
+功能按钮: ReadData
+调用方法: SamplePointManagement.readData()
+功能说明: 读取采样点数据
+
+功能按钮: AggregateData
+调用方法: SamplePointManagement.aggregateData()
+功能说明: 聚合采样点数据(如计算日平均值)
+
+功能按钮: DeleteByRequest
+调用方法: SamplePointManagement.deleteByRequest()
+功能说明: 按请求条件删除采样点
+
+功能按钮: DeleteBySamplePoint
+调用方法: SamplePointManagement.deleteBySamplePoint()
+功能说明: 按采样点对象删除数据
+
+结论: 此模块是健康数据的底层操作接口，处理原始的时序采样数据。
+
+5. 健康序列管理(HealthSequenceIndex.ets) - 健康指标时序数据
+
+功能按钮: SaveData
+调用方法: HealthSequenceManagement.saveData()
+功能说明: 写入健康序列数据(如心率、血压序列)
+
+功能按钮: ReadData
+调用方法: HealthSequenceManagement.readData()
+功能说明: 读取健康序列数据
+
+功能按钮: DeleteByRequest
+调用方法: HealthSequenceManagement.deleteByRequest()
+功能说明: 按条件删除健康序列
+
+功能按钮: DeleteByHealthSequence
+调用方法: HealthSequenceManagement.deleteByHealthSequence()
+功能说明: 按序列对象删除数据
+
+结论: 此模块管理健康指标的时间序列数据。
+
+6. 运动序列管理(ExerciseSequenceIndex.ets) - 运动指标时序数据
+
+功能按钮: SaveData
+调用方法: ExerciseSequenceManagement.saveData()
+功能说明: 写入运动序列数据(如配速、步频序列)
+
+功能按钮: ReadData
+调用方法: ExerciseSequenceManagement.readData()
+功能说明: 读取运动序列数据
+
+功能按钮: DeleteByRequest
+调用方法: ExerciseSequenceManagement.deleteByRequest()
+功能说明: 按条件删除运动序列
+
+功能按钮: DeleteByExerciseSequence
+调用方法: ExerciseSequenceManagement.deleteByExerciseSequence()
+功能说明: 按序列对象删除数据
+
+结论: 此模块与健康序列类似，但专门针对运动相关指标。
+
+7. 锻炼管理(WorkoutIndex.ets) - 活动报告查询
+
+功能按钮: ReadActivityReport
+调用方法: WorkoutManagement.readActivityReport()
+功能说明: 读取活动报告(汇总的锻炼数据)
+
+三、架构总结
+
+MainIndex(导航菜单) 作为顶层入口，向下连接六个功能模块: Auth权限管理、DataSource数据源、SamplePoint采样点、HealthSequence健康序列、ExerciseSequence运动序列、Workout锻炼报告。所有模块底层共同调用华为Health Service Kit。
+
