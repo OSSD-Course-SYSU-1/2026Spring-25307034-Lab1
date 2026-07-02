@@ -1,0 +1,50 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\futao\\.ohos\\config\\default_health_-service_-kit_-sample-code-master_rkWYvHId8lpnDkRabYyQDYuOevXuznSK0KlextOk6X8=.cer",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001B1706EB802537D7B1221D06C631D636D853F75E13AE888788B194251C948E2E89796C5DCD3E92B3",
+          "profile": "C:\\Users\\futao\\.ohos\\config\\default_health_-service_-kit_-sample-code-master_rkWYvHId8lpnDkRabYyQDYuOevXuznSK0KlextOk6X8=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\futao\\.ohos\\config\\default_health_-service_-kit_-sample-code-master_rkWYvHId8lpnDkRabYyQDYuOevXuznSK0KlextOk6X8=.p12",
+          "storePassword": "0000001B3CBC7DFBF77A01E21D413711A30539E2B6E72D119F3FEF64CC38555341F6731FFBB8E263B1D4F0"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compatibleSdkVersion": "5.0.0(12)",
+        "runtimeOS": "HarmonyOS",
+        "targetSdkVersion": "5.0.0(12)"
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug",
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}
